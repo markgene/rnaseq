@@ -126,6 +126,7 @@ def fetch_sra_runinfo(file_in,file_out,platform_list=[],library_layout_list=[]):
 
                         ## Resolve/expand to get run identifier from ENA and write to file
                         for id in ids:
+                            ena_fields = ['run_accession', 'experiment_accession', 'instrument_platform', 'library_layout', 'experiment_title', 'fastq_ftp', 'fastq_md5']
                             url = 'http://www.ebi.ac.uk/ena/data/warehouse/filereport?accession={}&result=read_run&fields={}'.format(id,','.join(ena_fields))
                             csv_dict = csv.DictReader(fetch_url(url), delimiter='\t')
                             for row in csv_dict:
